@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Cash from "./components/Cash";
 import Home from "./components/Home";
 import Password from "./components/Password";
 import SignUp from "./components/SignUp";
@@ -40,13 +41,6 @@ function App() {
             component={() => <Home authorized={authorized} />}
           />
           <Route
-            path="/home"
-            exact
-            component={() => (
-              <Home setAuthorized={setAuthorized} authorized={authorized} />
-            )}
-          />
-          <Route
             path="/password"
             component={() => (
               <Password
@@ -55,6 +49,14 @@ function App() {
               />
             )}
           />
+          <Route
+            path="/home"
+            exact
+            component={() => (
+              <Home setAuthorized={setAuthorized} authorized={authorized} />
+            )}
+          />
+          <Route path="/cash" exact component={() => <Cash />} />
         </Switch>
       </div>
     </Router>

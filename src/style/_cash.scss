@@ -1,0 +1,7 @@
+.cash {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  @include flex(column);
+  @include header;
+}

@@ -5,13 +5,34 @@ import { AiFillBook } from "react-icons/ai";
 import { HiOutlineCash } from "react-icons/hi";
 import { MdMoveToInbox } from "react-icons/md";
 import Header from "./Header";
+import { useHistory } from "react-router";
 
 function Home({ authorized }) {
+  let history = useHistory();
   const [active, setActive] = useState(0);
+  const [inbox, setInbox] = useState(false);
   const footerItems = [
-    { txt: "টালি", icon: <AiFillBook /> },
-    { txt: "ক্যাশ", icon: <HiOutlineCash /> },
-    { txt: "ইনবক্স", icon: <MdMoveToInbox /> },
+    {
+      txt: "টালি",
+      icon: <AiFillBook />,
+      func: () => {
+        setInbox(false);
+      },
+    },
+    {
+      txt: "ক্যাশ",
+      icon: <HiOutlineCash />,
+      func: () => {
+        history.push("/cash");
+      },
+    },
+    {
+      txt: "ইনবক্স",
+      icon: <MdMoveToInbox />,
+      func: () => {
+        setInbox(true);
+      },
+    },
   ];
   if (!authorized) {
     return <Redirect to="sign_up" />;
@@ -20,6 +41,7 @@ function Home({ authorized }) {
   return (
     <div className="main">
       <Header
+        inbox={inbox}
         home={true}
         header={
           localStorage.getItem("name") !== null
@@ -30,11 +52,23 @@ function Home({ authorized }) {
         moreIcon={<BsFillQuestionCircleFill />}
         moreText="হেল্প"
       />
-      <div className="main"></div>
+      {!inbox ? (
+        <div className="main">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis
+          dignissimos exercitationem aperiam vero at deserunt culpa nam sapiente
+          aliquam ducimus. Suscipit quibusdam, quod temporibus eum dicta
+          quisquam cumque reprehenderit ab?
+        </div>
+      ) : (
+        ""
+      )}
       <div className="footer">
         {footerItems.map((e, i) => (
           <div
-            onClick={() => setActive(i)}
+            onClick={() => {
+              setActive(i);
+              e.func();
+            }}
             className={active === i ? "active" : ""}
             key={i}
           >

@@ -1,7 +1,9 @@
 import React from "react";
 import { BiArrowBack } from "react-icons/bi";
+import { useHistory } from "react-router";
 
 function Header(props) {
+  let history = useHistory();
   return (
     <header>
       <div className="first">
@@ -12,11 +14,11 @@ function Header(props) {
             <div></div>
           </div>
         ) : (
-          <BiArrowBack />
+          <BiArrowBack onClick={() => history.push(props.backPath)} />
         )}
-        <p>{props.header}</p>
+        <p>{props.inbox ? "ইনবক্স" : props.header}</p>
       </div>
-      {props.more ? (
+      {!props.inbox ? (
         <div className="more">
           {props.moreIcon}
           <p>{props.moreText}</p>
