@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Redirect } from "react-router";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import { AiFillBook } from "react-icons/ai";
-import { HiOutlineCash } from "react-icons/hi";
+import { HiOutlineCash, HiUserAdd, HiOutlineMail } from "react-icons/hi";
+import { GiAlarmClock } from "react-icons/gi";
+import { GrYoutube } from "react-icons/gr";
 import { MdMoveToInbox } from "react-icons/md";
 import Header from "./Header";
 import { useHistory } from "react-router";
@@ -11,6 +13,17 @@ function Home({ authorized }) {
   let history = useHistory();
   const [active, setActive] = useState(0);
   const [inbox, setInbox] = useState(false);
+  const whenEmptyItm = [
+    {
+      txt: "হিসাবের খাতা থেকে কাস্টমার ও সাপ্লায়ার যোগ করুন।",
+      icon: <HiUserAdd />,
+    },
+    {
+      txt: "প্রতিটি লেনদেনে ফ্রি এসএমএস এর সুবিধা নিন।",
+      icon: <HiOutlineMail />,
+    },
+    { txt: "তাগাদা মেসেজ পাঠান", icon: <GiAlarmClock /> },
+  ];
   const footerItems = [
     {
       txt: "টালি",
@@ -54,10 +67,18 @@ function Home({ authorized }) {
       />
       {!inbox ? (
         <div className="main">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis
-          dignissimos exercitationem aperiam vero at deserunt culpa nam sapiente
-          aliquam ducimus. Suscipit quibusdam, quod temporibus eum dicta
-          quisquam cumque reprehenderit ab?
+          <div className="empty">
+            {whenEmptyItm.map((e, i) => (
+              <div key={i}>
+                {e.icon}
+                <p>{e.txt}</p>
+              </div>
+            ))}
+            <div>
+              <GrYoutube />
+              <span>ভিডিও দেখুন</span>
+            </div>
+          </div>
         </div>
       ) : (
         ""

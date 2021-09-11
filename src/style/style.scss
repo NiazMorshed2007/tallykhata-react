@@ -1,8 +1,7 @@
 @import "color";
 @import "font";
-@import "mixin";
-@import "signUp";
-@import "password";
+@import "./mixins/mixin";
+@import "./mixins/input";
 @import "home";
 @import "cash";
 

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useHistory } from "react-router";
+import style from "../style/signup/signUp.scss";
 
 function SignUp({ setPassedFirstStep }) {
   let history = useHistory();
@@ -18,7 +19,7 @@ function SignUp({ setPassedFirstStep }) {
     localStorage.setItem("number", inputs.current[1].value);
   };
   return (
-    <div className="sign-up">
+    <div style={style} className="sign-up">
       <div className="first">
         <div className="img-wrapper">
           <img src="images/talikhata.png" alt="" />

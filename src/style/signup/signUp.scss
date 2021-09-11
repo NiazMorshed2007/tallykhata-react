@@ -1,3 +1,7 @@
+@import "../mixins/mixin";
+@import "../mixins/input";
+@import "../color";
+
 .sign-up {
   @include flex(column);
   padding: 40px 20px 20px 20px;

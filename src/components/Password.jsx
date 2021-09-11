@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { TweenMax, Expo } from "gsap";
 import { useHistory } from "react-router";
+import style from "../style/password/password.scss";
 
 function Password({ passedFirstStep, authorized }) {
   let history = useHistory();
@@ -38,6 +39,7 @@ function Password({ passedFirstStep, authorized }) {
   }
   return (
     <div
+      style={style}
       ref={(el) => {
         thisPage = el;
       }}

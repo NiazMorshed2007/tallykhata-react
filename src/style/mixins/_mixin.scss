@@ -14,43 +14,6 @@
   }
 }
 
-@mixin introInputs {
-  label {
-    position: relative;
-    input {
-      width: 100%;
-      border-radius: 6px;
-      outline: none;
-      border: 1px solid $lightBorder;
-      padding: 10px;
-      caret-color: $most;
-      &:focus {
-        border: 2px solid $most;
-      }
-      &:focus ~ span {
-        transform: translateY(-32px);
-        color: $most;
-      }
-      &:valid ~ span {
-        transform: translateY(-32px);
-      }
-    }
-    span {
-      position: absolute;
-      display: block;
-      top: 50%;
-      left: 14px;
-      font-size: 12px;
-      transform: translateY(-50%);
-      transition: all 0.2s ease-in-out;
-      pointer-events: none;
-      padding: 3px;
-      background: white;
-      color: $darkSilver;
-    }
-  }
-}
-
 @mixin btn {
   button {
     width: 100%;
