@@ -1,0 +1,19 @@
+@import "color";
+@import "font";
+@import "mixin";
+@import "signUp";
+@import "password";
+@import "home";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: $bangla;
+}

@@ -1,0 +1,40 @@
+.main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  @include flex(column);
+  @include header;
+  position: relative;
+  .footer {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    background: $most;
+    @include flex(row);
+    align-items: center;
+    width: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    div {
+      height: 100%;
+      padding: 8px 0px 8px 0px;
+      width: 33.33%;
+      @include flex(column);
+      align-items: center;
+      color: white;
+      svg {
+        font-size: 19px;
+      }
+    }
+    .active {
+      background: $active;
+    }
+    & > :nth-child(1) {
+      border-top-left-radius: 7px;
+    }
+    & > :nth-child(3) {
+      border-top-right-radius: 7px;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.sign-up {
+  @include flex(column);
+  padding: 40px 20px 20px 20px;
+  .first {
+    @include imgWrapper;
+    p {
+      font-size: 14px;
+      transform: translateY(-10px);
+    }
+  }
+  .input-wrapper {
+    padding-top: 10px;
+    @include flex(column);
+    gap: 0.9em;
+    @include introInputs;
+    @include btn;
+  }
+  .footer {
+    padding-top: 20px;
+    font-size: 12px;
+    p {
+      text-align: center;
+      padding-bottom: 12px;
+      span {
+        color: $most;
+        text-decoration: underline;
+      }
+    }
+    & > :nth-child(2) {
+      color: $most;
+    }
+  }
+}

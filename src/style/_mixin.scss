@@ -1,0 +1,99 @@
+@mixin flex($d) {
+  display: flex;
+  flex-direction: $d;
+}
+
+@mixin imgWrapper {
+  .img-wrapper {
+    width: 120px;
+    height: 120px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@mixin introInputs {
+  label {
+    position: relative;
+    input {
+      width: 100%;
+      border-radius: 6px;
+      outline: none;
+      border: 1px solid $lightBorder;
+      padding: 10px;
+      caret-color: $most;
+      &:focus {
+        border: 2px solid $most;
+      }
+      &:focus ~ span {
+        transform: translateY(-32px);
+        color: $most;
+      }
+      &:valid ~ span {
+        transform: translateY(-32px);
+      }
+    }
+    span {
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 14px;
+      font-size: 12px;
+      transform: translateY(-50%);
+      transition: all 0.2s ease-in-out;
+      pointer-events: none;
+      padding: 3px;
+      background: white;
+      color: $darkSilver;
+    }
+  }
+}
+
+@mixin btn {
+  button {
+    width: 100%;
+    border: none;
+    background: $most;
+    color: white;
+    padding: 7px;
+    border-radius: 7px;
+  }
+  .disabled {
+    opacity: 0.4;
+  }
+}
+
+@mixin header {
+  header {
+    padding: 12px;
+    padding-left: 6px;
+    background: $pinkType;
+    @include flex(row);
+    align-items: center;
+    justify-content: space-between;
+    .first {
+      @include flex(row);
+      align-items: center;
+      gap: 0.8em;
+      .burger {
+        div {
+          width: 20px;
+          height: 2px;
+          background: $active;
+          margin: 4px;
+        }
+        .line2 {
+          width: 15px;
+        }
+      }
+    }
+    .more {
+      @include flex(row);
+      align-items: center;
+      gap: 0.3em;
+      color: $active;
+    }
+  }
+}
