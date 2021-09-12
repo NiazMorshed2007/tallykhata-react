@@ -30,6 +30,7 @@
 
 @mixin header {
   header {
+    width: 100%;
     padding: 12px;
     padding-left: 6px;
     background: $pinkType;

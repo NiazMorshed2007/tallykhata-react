@@ -9,7 +9,7 @@ import { MdMoveToInbox } from "react-icons/md";
 import Header from "./Header";
 import { useHistory } from "react-router";
 
-function Home({ authorized }) {
+function Home({ authorized, lists }) {
   let history = useHistory();
   const [active, setActive] = useState(0);
   const [inbox, setInbox] = useState(false);
@@ -52,7 +52,7 @@ function Home({ authorized }) {
   }
 
   return (
-    <div className="main">
+    <div className="home">
       <Header
         inbox={inbox}
         home={true}
@@ -78,6 +78,13 @@ function Home({ authorized }) {
               <GrYoutube />
               <span>ভিডিও দেখুন</span>
             </div>
+          </div>
+          <div
+            onClick={() => history.push("/cus-sup")}
+            className="add-customer-supplier"
+          >
+            <HiUserAdd />
+            <p>কাস্টমার যোগ করি</p>
           </div>
         </div>
       ) : (
