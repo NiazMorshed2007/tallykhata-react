@@ -11,7 +11,7 @@ function App() {
   const [passedFirstStep, setPassedFirstStep] = useState(false);
   let [authorized, setAuthorized] = useState(true);
 
-  const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState([[]]);
   console.log(lists.length);
 
   const authorizedData = () => {

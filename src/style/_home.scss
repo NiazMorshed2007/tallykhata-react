@@ -11,6 +11,62 @@
     width: 100%;
     position: relative;
     height: 100%;
+    .first {
+      background: $litePink;
+      width: 100%;
+      @include flex(column);
+      align-items: center;
+      padding-top: 5px;
+      padding-bottom: 25px;
+      border-bottom-left-radius: 19px;
+      border-bottom-right-radius: 19px;
+      div {
+        width: 80%;
+        @include flex(row);
+        align-items: center;
+        justify-content: space-around;
+      }
+      & > :nth-child(1) {
+        padding: 10px;
+        div {
+          @include flex(column);
+          p {
+            line-height: 20px;
+            font-size: 14px;
+          }
+        }
+        & > :nth-child(1) {
+          h3 {
+            color: $most;
+          }
+        }
+      }
+      & > :nth-child(2) {
+        background: white;
+        @include flex(row);
+        align-items: center;
+        gap: 0.2em;
+        justify-content: space-around;
+        width: 75%;
+        border-radius: 7px;
+        border: 1px solid $pinkType;
+        padding: 3px;
+        div {
+          @include flex(row);
+          align-items: center;
+          justify-content: center;
+          gap: 0.3em;
+          p {
+            font-size: 13px;
+          }
+          span {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+
+    // when there is no list
     .empty {
       width: 90%;
       border-radius: 7px;
@@ -81,10 +137,10 @@
       }
     }
     .add-customer-supplier {
-      position: fixed;
+      position: absolute;
       bottom: 80px;
       right: 15px;
-      padding: 12px;
+      padding: 12px 18px 12px 18px;
       border-radius: 24px;
       background: $most;
       color: white;

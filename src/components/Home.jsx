@@ -81,12 +81,30 @@ function Home({ authorized, lists }) {
               </div>
             </div>
           ) : (
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum cum
-              laudantium voluptas iusto officia mollitia quibusdam, fugit facere
-              magnam similique natus aspernatur debitis quos adipisci veniam,
-              alias soluta temporibus excepturi.
-            </p>
+            <div className="first">
+              <div>
+                <div>
+                  <h3>৯৬.০০</h3>
+                  <p>মোট পাবো</p>
+                </div>
+                <span>|</span>
+                <div>
+                  <h3>০.০০</h3>
+                  <p>মোট দেবো</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <p>আজকের বেচা</p>
+                  <span>৯৬.০০</span>
+                </div>
+                <span>|</span>
+                <div>
+                  <p>আজকের ক্যাশ</p>
+                  <span>০.০০</span>
+                </div>
+              </div>
+            </div>
           )}
 
           <div
