@@ -1,18 +1,31 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
-import { AiFillBook } from "react-icons/ai";
-import { HiOutlineCash, HiUserAdd, HiOutlineMail } from "react-icons/hi";
+import { AiFillBook, AiOutlineSearch } from "react-icons/ai";
+import {
+  HiOutlineCash,
+  HiUserAdd,
+  HiOutlineMail,
+  HiOutlineAdjustments,
+  HiDownload,
+} from "react-icons/hi";
+import {
+  MdVisibility,
+  MdVisibilityOff,
+  MdNotificationsActive,
+} from "react-icons/md";
 import { GiAlarmClock } from "react-icons/gi";
 import { GrYoutube } from "react-icons/gr";
 import { MdMoveToInbox } from "react-icons/md";
 import Header from "./Header";
 import { useHistory } from "react-router";
+import HomeList from "./HomeList";
 
 function Home({ authorized, lists }) {
   let history = useHistory();
   const [active, setActive] = useState(0);
   const [inbox, setInbox] = useState(false);
+  const [visibility, setVisibility] = useState(true);
   const whenEmptyItm = [
     {
       txt: "হিসাবের খাতা থেকে কাস্টমার ও সাপ্লায়ার যোগ করুন।",
@@ -81,30 +94,93 @@ function Home({ authorized, lists }) {
               </div>
             </div>
           ) : (
-            <div className="first">
-              <div>
+            <>
+              <div className="first">
                 <div>
-                  <h3>৯৬.০০</h3>
-                  <p>মোট পাবো</p>
+                  <div>
+                    <h3>৯৬.০০</h3>
+                    <p>মোট পাবো</p>
+                  </div>
+                  <span>|</span>
+                  <div>
+                    <h3>০.০০</h3>
+                    <p>মোট দেবো</p>
+                  </div>
                 </div>
-                <span>|</span>
                 <div>
-                  <h3>০.০০</h3>
-                  <p>মোট দেবো</p>
+                  <div>
+                    <p>আজকের বেচা</p>
+                    <span>৯৬.০০</span>
+                  </div>
+                  <span>|</span>
+                  <div>
+                    <p>আজকের ক্যাশ</p>
+                    <span>০.০০</span>
+                  </div>
                 </div>
               </div>
-              <div>
+              <div className="second">
                 <div>
-                  <p>আজকের বেচা</p>
-                  <span>৯৬.০০</span>
+                  <label>
+                    <input type="text" required placeholder="খোঁজ" />
+                    <i>
+                      <AiOutlineSearch />
+                    </i>
+                  </label>
+                  <i>
+                    <HiOutlineAdjustments
+                      style={{ transform: "rotate(-90deg)" }}
+                    />
+                  </i>
+                  <i
+                    onClick={() =>
+                      visibility ? setVisibility(false) : setVisibility(true)
+                    }
+                  >
+                    {visibility ? <MdVisibility /> : <MdVisibilityOff />}
+                  </i>
                 </div>
-                <span>|</span>
                 <div>
-                  <p>আজকের ক্যাশ</p>
-                  <span>০.০০</span>
+                  <div className="txt">
+                    <p>কাস্টমার 1</p>
+                    <p>সাপ্লায়ার 0</p>
+                  </div>
+                  <i>
+                    <HiDownload />
+                  </i>
+                  <div>
+                    <i>
+                      <MdNotificationsActive />
+                    </i>
+                    <p>তাগাদা পাঠাই</p>
+                  </div>
+                  <div>
+                    <p>
+                      <span>পাবো</span>/দেবো
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+              <div className="third">
+                <div className="inner-third">
+                  <div className="list-wrapper">
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                    <HomeList />
+                  </div>
+                </div>
+              </div>
+            </>
           )}
 
           <div
