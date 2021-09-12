@@ -67,18 +67,28 @@ function Home({ authorized, lists }) {
       />
       {!inbox ? (
         <div className="main">
-          <div className="empty">
-            {whenEmptyItm.map((e, i) => (
-              <div key={i}>
-                {e.icon}
-                <p>{e.txt}</p>
+          {lists.length === 0 ? (
+            <div className="empty">
+              {whenEmptyItm.map((e, i) => (
+                <div key={i}>
+                  {e.icon}
+                  <p>{e.txt}</p>
+                </div>
+              ))}
+              <div>
+                <GrYoutube />
+                <span>ভিডিও দেখুন</span>
               </div>
-            ))}
-            <div>
-              <GrYoutube />
-              <span>ভিডিও দেখুন</span>
             </div>
-          </div>
+          ) : (
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum cum
+              laudantium voluptas iusto officia mollitia quibusdam, fugit facere
+              magnam similique natus aspernatur debitis quos adipisci veniam,
+              alias soluta temporibus excepturi.
+            </p>
+          )}
+
           <div
             onClick={() => history.push("/cus-sup")}
             className="add-customer-supplier"

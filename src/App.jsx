@@ -10,8 +10,9 @@ import "./style/style.scss";
 function App() {
   const [passedFirstStep, setPassedFirstStep] = useState(false);
   let [authorized, setAuthorized] = useState(true);
-  let [cusSupName, setCusSupName] = useState("");
+
   const [lists, setLists] = useState([]);
+  console.log(lists.length);
 
   const authorizedData = () => {
     localStorage.getItem("authorized") === null
@@ -55,16 +56,10 @@ function App() {
           <Route
             path="/home"
             exact
-            component={() => <Home authorized={authorized} />}
+            component={() => <Home lists={lists} authorized={authorized} />}
           />
           <Route path="/cash" exact component={() => <Cash />} />
-          <Route
-            path="/cus-sup"
-            exact
-            component={() => (
-              <CusSup cusSupName={cusSupName} setCusSupName={setCusSupName} />
-            )}
-          />
+          <Route path="/cus-sup" exact component={() => <CusSup />} />
         </Switch>
       </div>
     </Router>

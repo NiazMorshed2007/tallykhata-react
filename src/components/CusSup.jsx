@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import Header from "./Header";
 import { IoMdContact } from "react-icons/io";
 
-function CusSup({ cusSupName, setCusSupName }) {
+function CusSup(props) {
   const [activeCategory, setActiveCategory] = useState(0);
   const [disabled, setDisabled] = useState(true);
   const category = ["কাস্টমার", "সাপ্লায়ার"];
+  const [inputTxt, setInputText] = useState("");
   const placeholders = [
-    { txt: "সাপ্লায়ারের নাম", nameInput: true },
-    { txt: "মোবাইল নম্বর", nameInput: false },
-    { txt: "পূর্বের বাকি (জের)", nameInput: false },
+    { txt: "মোবাইল নম্বর", nameInput: false, id: 1 },
+    { txt: "পূর্বের বাকি (জের)", nameInput: false, id: 2 },
   ];
   const checkName = (e) => {
     e.target.value !== "" ? setDisabled(false) : setDisabled(true);
   };
   const handleInput = (e) => {
-    setCusSupName(e.target.value);
+    e.preventDefault();
+    setInputText(e.target.value);
   };
   return (
     <div className="customer-supplier">
@@ -41,24 +42,26 @@ function CusSup({ cusSupName, setCusSupName }) {
         <p>ফোনবুক থেকে যোগ করি</p>
       </div>
       <div className="inputs-wrapper">
+        <label>
+          <input
+            onChange={(e) => {
+              handleInput(e);
+              checkName(e);
+            }}
+            value={inputTxt}
+            type="text"
+            required
+          />
+          <span>সাপ্লায়ারের নাম</span>
+        </label>
         {placeholders.map((e, i) => (
           <label key={i}>
-            <input
-              onChange={(event) => {
-                if (e.nameInput) {
-                  handleInput(event);
-                  checkName(event);
-                }
-              }}
-              value={e.nameInput ? cusSupName : ""}
-              type="text"
-              required
-            />
+            <input type="text" required />
             <span>{e.txt}</span>
           </label>
         ))}
       </div>
-      <p>{cusSupName}</p>
+      <p>{inputTxt}</p>
       <button
         disabled={disabled ? true : false}
         className={disabled ? "disabled" : ""}

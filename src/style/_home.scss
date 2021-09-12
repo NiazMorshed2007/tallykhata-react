@@ -8,7 +8,6 @@
   .main {
     @include flex(column);
     align-items: center;
-    justify-content: center;
     width: 100%;
     position: relative;
     height: 100%;
@@ -106,8 +105,8 @@
     @include flex(row);
     align-items: center;
     width: 100%;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     div {
       height: 100%;
       padding: 8px 0px 8px 0px;
@@ -123,10 +122,10 @@
       background: $active;
     }
     & > :nth-child(1) {
-      border-top-left-radius: 7px;
+      border-top-left-radius: 10px;
     }
     & > :nth-child(3) {
-      border-top-right-radius: 7px;
+      border-top-right-radius: 10px;
     }
   }
 }
