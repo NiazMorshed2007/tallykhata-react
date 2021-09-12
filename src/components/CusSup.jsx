@@ -15,7 +15,6 @@ function CusSup(props) {
     e.target.value !== "" ? setDisabled(false) : setDisabled(true);
   };
   const handleInput = (e) => {
-    e.preventDefault();
     setInputText(e.target.value);
   };
   const handleAdd = () => {

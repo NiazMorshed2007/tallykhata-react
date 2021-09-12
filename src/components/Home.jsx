@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import { AiFillBook, AiOutlineSearch } from "react-icons/ai";
@@ -24,6 +24,8 @@ import HomeList from "./HomeList";
 function Home({ authorized, lists }) {
   let history = useHistory();
   const [active, setActive] = useState(0);
+  const [totalCustomer, setTotalCustomer] = useState(0);
+  const [totalSupplier, setTotalSupplier] = useState(0);
   const [inbox, setInbox] = useState(false);
   const [visibility, setVisibility] = useState(true);
   const whenEmptyItm = [
@@ -60,6 +62,21 @@ function Home({ authorized, lists }) {
       },
     },
   ];
+  const handleTotalPeople = () => {
+    const filterCustomer = lists.filter((list) => {
+      return list.type === "customer";
+    });
+    const filterSupplier = lists.filter((list) => {
+      return list.type === "supplier";
+    });
+    setTotalCustomer(filterCustomer.length);
+    setTotalSupplier(filterSupplier.length);
+  };
+
+  useEffect(() => {
+    handleTotalPeople();
+  }, [lists]);
+
   if (!authorized) {
     return <Redirect to="sign_up" />;
   }
@@ -142,8 +159,12 @@ function Home({ authorized, lists }) {
                 </div>
                 <div>
                   <div className="txt">
-                    <p>কাস্টমার 1</p>
-                    <p>সাপ্লায়ার 0</p>
+                    <p>
+                      কাস্টমার <span>{totalCustomer}</span>
+                    </p>
+                    <p>
+                      সাপ্লায়ার <span>{totalSupplier}</span>
+                    </p>
                   </div>
                   <i>
                     <HiDownload />
