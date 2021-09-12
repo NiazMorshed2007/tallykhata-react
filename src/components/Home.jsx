@@ -164,19 +164,7 @@ function Home({ authorized, lists }) {
               <div className="third">
                 <div className="inner-third">
                   <div className="list-wrapper">
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
-                    <HomeList />
+                    <HomeList lists={lists} />
                   </div>
                 </div>
               </div>

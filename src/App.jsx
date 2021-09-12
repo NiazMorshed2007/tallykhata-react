@@ -11,8 +11,7 @@ function App() {
   const [passedFirstStep, setPassedFirstStep] = useState(false);
   let [authorized, setAuthorized] = useState(true);
 
-  const [lists, setLists] = useState([[]]);
-  console.log(lists.length);
+  const [lists, setLists] = useState([]);
 
   const authorizedData = () => {
     localStorage.getItem("authorized") === null
@@ -59,7 +58,11 @@ function App() {
             component={() => <Home lists={lists} authorized={authorized} />}
           />
           <Route path="/cash" exact component={() => <Cash />} />
-          <Route path="/cus-sup" exact component={() => <CusSup />} />
+          <Route
+            path="/cus-sup"
+            exact
+            component={() => <CusSup lists={lists} setLists={setLists} />}
+          />
         </Switch>
       </div>
     </Router>

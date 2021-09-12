@@ -1,23 +1,27 @@
 import React from "react";
 import { BiChevronRight } from "react-icons/bi";
 
-function HomeList() {
+function HomeList(props) {
   return (
-    <div className="list">
-      <div>
-        <div>NZ</div>
-        <div>
-          <p>Niaz Morshed</p>
-          <span>supplier</span>
+    <>
+      {props.lists.map((list) => (
+        <div key={list.id} className="list">
+          <div>
+            <div>NZ</div>
+            <div>
+              <p>{list.text}</p>
+              {list.type === "supplier" ? <span>সাপ্লায়ার</span> : ""}
+            </div>
+          </div>
+          <div>
+            <p>৯৬.০০</p>
+            <i>
+              <BiChevronRight />
+            </i>
+          </div>
         </div>
-      </div>
-      <div>
-        <p>৯৬.০০</p>
-        <i>
-          <BiChevronRight />
-        </i>
-      </div>
-    </div>
+      ))}
+    </>
   );
 }
 

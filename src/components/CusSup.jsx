@@ -18,6 +18,19 @@ function CusSup(props) {
     e.preventDefault();
     setInputText(e.target.value);
   };
+  const handleAdd = () => {
+    if (inputTxt !== "") {
+      props.setLists([
+        {
+          text: inputTxt,
+          id: Math.random() * 10000,
+          type: activeCategory === 0 ? "customer" : "supplier",
+        },
+        ...props.lists,
+      ]);
+    }
+    setInputText("");
+  };
   return (
     <div className="customer-supplier">
       <Header
@@ -52,7 +65,9 @@ function CusSup(props) {
             type="text"
             required
           />
-          <span>সাপ্লায়ারের নাম</span>
+          <span>
+            {activeCategory === 0 ? "কাস্টমারের নাম" : "সাপ্লায়ারের নাম"}
+          </span>
         </label>
         {placeholders.map((e, i) => (
           <label key={i}>
@@ -63,6 +78,7 @@ function CusSup(props) {
       </div>
       <p>{inputTxt}</p>
       <button
+        onClick={() => handleAdd()}
         disabled={disabled ? true : false}
         className={disabled ? "disabled" : ""}
       >
