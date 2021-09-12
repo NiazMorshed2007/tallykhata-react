@@ -8,10 +8,18 @@ import CusSup from "./components/CusSup";
 import "./style/style.scss";
 
 function App() {
+  const parseHomeLists = () => {
+    const homeLists = localStorage.getItem("home-lists");
+    if (homeLists) {
+      return JSON.parse(localStorage.getItem("home-lists"));
+    } else {
+      return [];
+    }
+  };
+
   const [passedFirstStep, setPassedFirstStep] = useState(false);
   let [authorized, setAuthorized] = useState(true);
-
-  const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState(parseHomeLists());
 
   const authorizedData = () => {
     localStorage.getItem("authorized") === null
@@ -22,6 +30,10 @@ function App() {
   useEffect(() => {
     authorizedData();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("home-lists", JSON.stringify(lists));
+  }, [lists]);
 
   return (
     <Router>
