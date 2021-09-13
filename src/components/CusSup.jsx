@@ -7,9 +7,10 @@ function CusSup(props) {
   const [disabled, setDisabled] = useState(true);
   const category = ["কাস্টমার", "সাপ্লায়ার"];
   const [inputTxt, setInputText] = useState("");
+  // const [inputNumber, setInputNumber] = useState("");
   const placeholders = [
-    { txt: "মোবাইল নম্বর", nameInput: false, id: 1 },
-    { txt: "পূর্বের বাকি (জের)", nameInput: false, id: 2 },
+    { txt: "মোবাইল নম্বর", nameInput: false, numInput: true, id: 1 },
+    { txt: "পূর্বের বাকি (জের)", nameInput: false, numInput: true, id: 2 },
   ];
   const checkName = (e) => {
     e.target.value !== "" ? setDisabled(false) : setDisabled(true);
@@ -17,6 +18,9 @@ function CusSup(props) {
   const handleInput = (e) => {
     setInputText(e.target.value);
   };
+  // const handleNumberInput = (e) => {
+  //   setInputNumber(e.target.value);
+  // };
   const handleAdd = () => {
     if (inputTxt !== "") {
       props.setLists([
@@ -70,7 +74,16 @@ function CusSup(props) {
         </label>
         {placeholders.map((e, i) => (
           <label key={i}>
-            <input type="text" required />
+            <input
+              type="text"
+              // onChange={(event) => {
+              //   e.numInput
+              //     ? handleNumberInput(event)
+              //     : console.log("something");
+              // }}
+              // value={e.nameInput ?  inputNumber )}
+              required
+            />
             <span>{e.txt}</span>
           </label>
         ))}
