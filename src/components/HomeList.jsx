@@ -14,7 +14,7 @@ function HomeList(props) {
             </div>
           </div>
           <div>
-            <p>৯৬.০০</p>
+            <p>{list.debt}</p>
             <i>
               <BiChevronRight />
             </i>

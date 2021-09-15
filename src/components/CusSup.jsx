@@ -7,25 +7,34 @@ function CusSup(props) {
   const [disabled, setDisabled] = useState(true);
   const category = ["কাস্টমার", "সাপ্লায়ার"];
   const [inputTxt, setInputText] = useState("");
-  // const [inputNumber, setInputNumber] = useState("");
-  const placeholders = [
-    { txt: "মোবাইল নম্বর", nameInput: false, numInput: true, id: 1 },
-    { txt: "পূর্বের বাকি (জের)", nameInput: false, numInput: true, id: 2 },
-  ];
+  const [inputNumber, setInputNumber] = useState("");
+  const [debt, setDebt] = useState("");
+
   const checkName = (e) => {
     e.target.value !== "" ? setDisabled(false) : setDisabled(true);
   };
   const handleInput = (e) => {
     setInputText(e.target.value);
   };
-  // const handleNumberInput = (e) => {
-  //   setInputNumber(e.target.value);
-  // };
+  const handleOnlyNumber = (e) => {
+    if (/\D/g.test(e.target.value))
+      e.target.value = e.target.value.replace(/\D/g, "");
+  };
+  const handleNumberInput = (e) => {
+    setInputNumber(e.target.value);
+  };
+
+  const handleDebt = (e) => {
+    setDebt(e.target.value);
+  };
+
   const handleAdd = () => {
     if (inputTxt !== "") {
       props.setLists([
         {
           text: inputTxt,
+          number: inputNumber,
+          debt: debt,
           id: Math.random() * 10000,
           type: activeCategory === 0 ? "customer" : "supplier",
         },
@@ -33,6 +42,8 @@ function CusSup(props) {
       ]);
     }
     setInputText("");
+    setInputNumber("");
+    setDebt("");
   };
   return (
     <div className="customer-supplier">
@@ -72,21 +83,31 @@ function CusSup(props) {
             {activeCategory === 0 ? "কাস্টমারের নাম" : "সাপ্লায়ারের নাম"}
           </span>
         </label>
-        {placeholders.map((e, i) => (
-          <label key={i}>
-            <input
-              type="text"
-              // onChange={(event) => {
-              //   e.numInput
-              //     ? handleNumberInput(event)
-              //     : console.log("something");
-              // }}
-              // value={e.nameInput ?  inputNumber )}
-              required
-            />
-            <span>{e.txt}</span>
-          </label>
-        ))}
+
+        <label>
+          <input
+            inputMode="tel"
+            onChange={(e) => {
+              handleOnlyNumber(e);
+              handleNumberInput(e);
+            }}
+            type="text"
+            required
+          />
+          <span>মোবাইল নম্বর</span>
+        </label>
+        <label>
+          <input
+            inputMode="tel"
+            onChange={(e) => {
+              handleOnlyNumber(e);
+              handleDebt(e);
+            }}
+            type="text"
+            required
+          />
+          <span>পূর্বের বাকি (জের)</span>
+        </label>
       </div>
       <p>{inputTxt}</p>
       <button
